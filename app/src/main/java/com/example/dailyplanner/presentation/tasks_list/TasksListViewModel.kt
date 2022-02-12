@@ -3,6 +3,7 @@ package com.example.dailyplanner.presentation.tasks_list
 import androidx.lifecycle.viewModelScope
 import com.example.dailyplanner.config.AppExt.getDayPeriod
 import com.example.dailyplanner.config.AppExt.toHour
+import com.example.dailyplanner.config.Constants.ONE_HOUR
 import com.example.dailyplanner.data.base.Result
 import com.example.dailyplanner.domain.GetTasksUseCase
 import com.example.dailyplanner.domain.model.Task
@@ -53,12 +54,12 @@ class TasksListViewModel @Inject constructor(private val getTasksUseCase: GetTas
         val currentDayPeriod = day.getDayPeriod()
         var timePeriod = currentDayPeriod.first
         while (timePeriod < currentDayPeriod.second) {
-            val hourTimePeriod = timePeriod to timePeriod + 3600000
+            val hourTimePeriod = timePeriod to timePeriod + ONE_HOUR
             val tableItem = TableItem(hourTimePeriod.toHour())
             tableItem.task = tasks.firstOrNull {
                 it.isTaskInsidePeriod(hourTimePeriod)
             }
-            timePeriod += 3600000
+            timePeriod += ONE_HOUR
             tableItems.add(tableItem)
         }
         return tableItems

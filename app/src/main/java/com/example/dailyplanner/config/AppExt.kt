@@ -1,5 +1,6 @@
 package com.example.dailyplanner.config
 
+import com.example.dailyplanner.config.Constants.ONE_DAY
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -10,7 +11,7 @@ object AppExt {
 
     fun Calendar.getDayPeriod(): Pair<Long, Long> {
         val dayStart = this.toTimestamp()
-        return dayStart to dayStart + 86400000
+        return dayStart to dayStart + ONE_DAY
     }
 
     fun Pair<Long?, Long?>.toHour(): String {
