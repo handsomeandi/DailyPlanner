@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/tasksListFragment">
+
+    <fragment
+        android:id="@+id/tasksListFragment"
+        android:name="com.example.dailyplanner.presentation.tasks_list.TasksListFragment"
+        android:label="fragment_tasks_list"
+        tools:layout="@layout/fragment_tasks_list">
+        <action
+            android:id="@+id/action_tasksListFragment_to_taskDetailFragment"
+            app:destination="@id/taskDetailFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/taskDetailFragment"
+        android:name="com.example.dailyplanner.presentation.task_detail.TaskDetailFragment"
+        android:label="TaskDetailFragment">
+        <argument
+            android:name="task"
+            android:defaultValue="@null"
+            app:argType="com.example.dailyplanner.domain.model.Task"
+            app:nullable="true" />
+    </fragment>
+</navigation>
